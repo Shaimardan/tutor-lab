@@ -1,0 +1,50 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: larger;
+}
+
+ul {
+  display: flex;
+  list-style-type: none;
+}
+
+.header_fixed {
+  position: fixed;
+  flex: 0 0 auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+header {
+  flex: 0 0 auto;
+}
+
+.icon {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: larger;
+}
+
+.mat-toolbar {
+  justify-content: space-between;
+}
+
+.active {
+  background-color: #64b53f;
+}
+
+.active-route {
+  border-bottom: 2px var(--mat-toolbar-container-text-color) solid;
+  border-radius: 0;
+  margin-bottom: -2px;
+}
+
+.button {
+  padding-left: 15px;
+  padding-right: 15px;
+}

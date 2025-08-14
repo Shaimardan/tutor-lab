@@ -1,0 +1,19 @@
+<body class="wrapper">
+  <ng-container *ngIf="user$ | async">
+    <button
+      *ngIf="isScrolled && !isHeaderVisible"
+      (click)="showHeader()"
+      class="show-header-button"
+      aria-label="Показать заголовок"
+    ></button>
+    <app-header
+      [isVisible]="isHeaderVisible"
+      [isScrolled]="isScrolled"
+    ></app-header>
+    <router-outlet></router-outlet>
+    <app-footer></app-footer>
+  </ng-container>
+  <ng-container *ngIf="(user$ | async) === null">
+    <router-outlet></router-outlet>
+  </ng-container>
+</body>

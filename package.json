@@ -1,0 +1,32 @@
+{
+  "scripts": {
+    "install:dev": "npm run install:frontend && npm run install:backend",
+    "install:frontend": "cd frontend && npm i",
+    "install:backend": "cd backend && python3 -m venv .venv && . .venv/bin/activate || .venv\\Scripts\\activate && pip install -r requirements.txt",
+
+    "run:frontend": "cd frontend && npm run start",
+    "run:backend": "cd backend && .\\.venv\\Scripts\\python.exe ./main.py || ./.venv/bin/python ./main.py",
+    "run:dev-dbs": "docker-compose -f docker-compose.dev-dbs.yml up",
+    "gen:api": "cd backend && .\\.venv\\Scripts\\python.exe ./generator.py && cd .\\..\\frontend && npx ng-openapi-gen --input ../common/open_api.json --output ./src/app/openapi/",
+    "gen:api:linux": "cd backend && ./.venv/bin/python ./generator.py && cd ./../frontend && npx ng-openapi-gen --input ../common/open_api.json --output ./src/app/openapi/",
+    "format": "npm run format:frontend && npm run format:backend",
+    "format:linux": "npm run format:frontend && npm run format:backend:linux",
+    "format:frontend": "cd frontend && npm run format:fix && npm run lint",
+    "format:backend": "npm run format:isort && black backend && npm run format:flake8",
+    "format:backend:linux": "npm run format:isort:linux && ./backend/.venv/bin/black backend && npm run format:flake8:linux",
+    "mypy_check": "cd backend && .venv\\Scripts\\mypy .",
+    "tests:backend": "cd backend && pytest tests/",
+    "test:e2e": "cd e2e && npm run playwright",
+    "format:isort": "backend\\.venv\\Scripts\\isort backend backend",
+    "format:isort:check": "isort --check-only backend",
+    "format:isort:linux": "./backend/.venv/bin/isort backend",
+    "format:flake8": "cd backend && .venv\\Scripts\\flake8 .",
+    "format:flake8:linux": "cd backend && .venv/bin/flake8 .",
+
+    "pre-commit:format:backend": "npm run format:isort && backend\\.venv\\Scripts\\black backend && npm run format:flake8 && npm run mypy_check"
+  },
+  "dependencies": {
+    "@angular/material-moment-adapter": "^18.2.2",
+    "moment": "^2.30.1"
+  }
+}

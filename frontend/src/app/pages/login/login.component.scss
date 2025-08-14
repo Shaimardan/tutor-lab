@@ -1,0 +1,49 @@
+:host {
+  height: 100%;
+}
+
+// button[mat-flat-button] {
+//   background-color: #3b82f6; /* Цвет кнопки */
+//   color: #ffffff; /* Цвет текста кнопки */
+
+//   &:hover {
+//     background-color: #2563eb; /* Цвет кнопки при наведении */
+//   }
+// }
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.login-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.form-inputs {
+  display: flex;
+  flex-direction: column;
+  // background-color: var(--mat-sidenav-content-background-color, var(--mat-app-background));
+}
+
+.login-button {
+  margin: auto;
+}
+
+.logo-img {
+  margin-bottom: 40px;
+}
+
+input {
+  background-clip: text !important;
+}
+
+.form-field {
+  width: 15.5em;
+}

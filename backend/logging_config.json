@@ -1,0 +1,90 @@
+{
+    "version": 1.0,
+    "disable_existing_loggers": false,
+    "formatters": {
+        "simple": {
+            "format": "%(asctime)s - [%(name)s] - [%(levelname)s] - [%(filename)s (%(lineno)d)] - %(message)s"
+        },
+        "detail": {
+            "format": "%(asctime)s - [%(name)s] - [%(levelname)s] - [%(filename)s (%(lineno)d)] - %(message)s"
+        },
+        "uvicorn_format": {
+            "format": "%(asctime)s - [%(levelname)s] - %(message)s"
+        },
+        "sqlalchemy_format": {
+            "format": "%(asctime)s - [%(levelname)s] - %(message)s"
+        }
+    },
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "formatter": "simple",
+            "level": "INFO",
+            "stream": "ext://sys.stdout"
+        },
+        "file": {
+            "class" : "logging.handlers.RotatingFileHandler",
+            "formatter": "detail",
+            "filename": "logs",
+            "maxBytes": 2097152,
+            "backupCount": 3
+        },
+        "uvicorn_console": {
+            "class": "logging.StreamHandler",
+            "formatter": "uvicorn_format",
+            "level": "INFO",
+            "stream": "ext://sys.stdout"
+        },
+        "uvicorn_file": {
+            "formatter": "uvicorn_format",
+            "class": "logging.handlers.RotatingFileHandler",
+            "filename": "logs",
+            "maxBytes": 2097152,
+            "backupCount": 3
+        },
+        "sqlalchemy_console": {
+            "class": "logging.StreamHandler",
+            "formatter": "uvicorn_format",
+            "level": "INFO",
+            "stream": "ext://sys.stdout"
+        },
+        "sqlalchemy_file": {
+            "formatter": "sqlalchemy_format",
+            "class": "logging.handlers.RotatingFileHandler",
+            "filename": "logs",
+            "maxBytes": 2097152,
+            "backupCount": 3
+        }
+    },
+    "loggers": {
+        "uvicorn": {
+            "handlers": ["uvicorn_console"],
+            "level": "INFO",
+            "propagate": false
+        },
+        "uvicorn.access": {
+            "handlers": ["uvicorn_console", "uvicorn_file", "file"],
+            "level": "INFO",
+            "propagate": false
+        },
+        "uvicorn.error": {
+            "handlers": ["uvicorn_console"],
+            "level": "INFO",
+            "propagate": false
+        },
+        "uvicorn.asgi": {
+            "handlers": ["uvicorn_console"],
+            "level": "INFO",
+            "propagate": false
+        },
+        "sqlalchemy": {
+            "handlers": ["sqlalchemy_console", "sqlalchemy_file"],
+            "level": "INFO",
+            "propagate": false
+        }
+    },
+    "root": {
+        "level": "INFO",
+        "handlers": ["console", "file"]
+    }
+}

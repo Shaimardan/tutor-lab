@@ -1,0 +1,17 @@
+.tooltip {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+
+  .icon-highlight {
+    transition: color 0.3s;
+
+    &:hover {
+      color: darkblue;
+    }
+  }
+}
+
+.md-tooltip {
+  height: auto;
+}

@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="login-box">
+    <img
+      src="./../../../static/icons/logo.png"
+      alt="Логотип"
+      class="logo-img"
+    />
+    <h1 class="header-login">Tutuor Lab</h1>
+    <form class="form">
+      <div class="form-inputs">
+        <div class="login">
+          <mat-form-field
+            class="form-field"
+            hideRequiredMarker
+            appearance="outline"
+          >
+            <mat-label>Имя пользователя</mat-label>
+            <input
+              class="input"
+              matInput
+              placeholder="Введите имя пользователя"
+              type="text"
+              [(ngModel)]="username"
+              name="username"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <div class="password">
+          <mat-form-field
+            class="form-field"
+            hideRequiredMarker
+            appearance="outline"
+          >
+            <mat-label>Пароль</mat-label>
+            <input
+              matInput
+              type="password"
+              placeholder="Введите пароль"
+              [(ngModel)]="password"
+              name="password"
+              required
+            />
+          </mat-form-field>
+        </div>
+        <div class="login-button">
+          <button
+            mat-flat-button
+            color="primary"
+            (click)="login()"
+          >
+            Войти
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

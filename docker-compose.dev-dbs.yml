@@ -1,0 +1,41 @@
+version: "3.3"
+
+services:
+  dev-db-postgres:
+    image: postgres
+    shm_size: 128mb
+    volumes:
+      - ./volumes/postgres:/data/postgres
+    ports:
+      - 8002:5432
+    environment:
+      POSTGRES_USER: example
+      POSTGRES_PASSWORD: example
+      PGDATA: /data/postgres
+
+  dev-db-test-postgres:
+    image: postgres
+    shm_size: 128mb
+    ports:
+      - 8004:5432
+    environment:
+      POSTGRES_USER: example
+      POSTGRES_PASSWORD: example
+
+  dev-db-adminer:
+    image: adminer
+    ports:
+      - 8003:8080
+
+  minio:
+    image: minio/minio
+    container_name: minio
+    ports:
+    - "9000:9000" # API
+    - "9090:9090" # Console UI
+    environment:
+      MINIO_ROOT_USER: admin
+      MINIO_ROOT_PASSWORD: Secure123
+    volumes:
+      - ./volumes/minio:/data-minio
+    command: server /data-minio --console-address ":9090"

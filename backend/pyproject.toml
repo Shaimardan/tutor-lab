@@ -1,0 +1,23 @@
+[tool.mypy]
+mypy_path = "./src"
+disallow_untyped_decorators = false
+disallow_subclassing_any = false
+ignore_missing_imports = true
+disallow_untyped_defs = true
+follow_imports = "skip"
+strict = false
+exclude = "tests"
+
+[[tool.mypy.overrides]]
+module = "tests"
+disallow_untyped_defs = false
+
+
+[tool.black]
+line-length = 100
+
+[tool.isort]
+profile = "black"
+line_length = 100
+multi_line_output = 3
+skip_gitignore = true

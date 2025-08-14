@@ -1,0 +1,102 @@
+<div class="full-flex-center-table">
+  <h1>Все пользователи:</h1>
+
+  <div *ngIf="users$ | async; let dataSource">
+    <table
+      mat-table
+      [dataSource]="dataSource"
+      class="mat-elevation-z2"
+    >
+      <ng-container matColumnDef="username">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+        >
+          Пользователь
+        </th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+        >
+          {{ element.username }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="fullname">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+        >
+          Полное имя
+        </th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+        >
+          {{ element.fullname }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+        >
+          E-mail
+        </th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+        >
+          {{ element.email }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="roles">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+        >
+          Роли
+        </th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+        >
+          <div *ngFor="let role of element.roles; index as i">
+            {{ role }}
+          </div>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="edit">
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+        ></th>
+        <td
+          mat-cell
+          *matCellDef="let element"
+        >
+          <a
+            mat-icon-button
+            [disabled]="true"
+            color="primary"
+            [href]="'/users/edit/' + element.user_id"
+          >
+            <mat-icon>edit</mat-icon>
+          </a>
+        </td>
+      </ng-container>
+
+      <tr
+        mat-header-row
+        *matHeaderRowDef="displayedColumns"
+      ></tr>
+      <tr
+        mat-row
+        *matRowDef="let row; columns: displayedColumns"
+      ></tr>
+    </table>
+  </div>
+</div>

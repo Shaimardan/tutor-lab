@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>{{ this.dialogData.mat_dialog_title }}</h2>
+<mat-dialog-content>
+  {{ this.dialogData.mat_dialog_content }}
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button
+    mat-button
+    (click)="onNoClick()"
+  >
+    {{ this.dialogData.mat_dialog_no_button_word }}
+  </button>
+  <button
+    mat-button
+    (click)="onYesClick()"
+    cdkFocusInitial
+  >
+    {{ this.dialogData.mat_dialog_yes_button_word }}
+  </button>
+</mat-dialog-actions>

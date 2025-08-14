@@ -1,0 +1,45 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  max-height: 100vh;
+}
+
+.show-header-button {
+  position: fixed;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1001;
+  width: 80px;
+  height: 45px;
+  background-color: gray;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition:
+    background-color 0.3s,
+    transform 0.3s;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+
+  &:hover {
+    background-color: #3f51b5;
+    transform: translateX(-50%) translateY(-5px);
+  }
+}
+app-footer {
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  height: 28px;
+  width: 100%;
+  background-color: #3f51b5;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  z-index: 100;
+}

@@ -1,0 +1,61 @@
+<header
+  [@slideInOut]
+  *ngIf="isVisible"
+  [ngClass]="{ header_fixed: isScrolled }"
+>
+  <mat-toolbar
+    color="primary"
+    aria-label="toolbar"
+    #toolbar
+  >
+    <div class="icon">
+      <button
+        mat-icon-button
+        [matMenuTriggerFor]="menu"
+        aria-label="Menu"
+        (click)="onClickMenu()"
+        *ngIf="true"
+      >
+        <mat-icon *ngIf="!isMenuRaised; else rised"> menu </mat-icon>
+        <ng-template #rised>
+          <mat-icon style="transform: rotate(90deg)">menu</mat-icon>
+        </ng-template>
+      </button>
+      <mat-menu
+        #menu="matMenu"
+        [hasBackdrop]="false"
+      >
+        <button
+          mat-menu-item
+          [routerLink]="['/']"
+          #expand
+          (click)="onClickMenu()"
+        >
+          <mat-icon>expand_circle_down</mat-icon>
+          <span>Расписание</span>
+        </button>
+      </mat-menu>
+
+      <span>Tutor Lab </span>
+    </div>
+    <nav>
+      <ul>
+        <li *ngIf="isUsersPageAvailable$ | async">
+          <a
+            mat-button
+            [routerLink]="['/users']"
+            routerLinkActive="active-route"
+            >Пользователи</a
+          >
+        </li>
+        <li></li>
+      </ul>
+      <button
+        mat-button
+        (click)="logout()"
+      >
+        <mat-icon>logout</mat-icon>
+      </button>
+    </nav>
+  </mat-toolbar>
+</header>
